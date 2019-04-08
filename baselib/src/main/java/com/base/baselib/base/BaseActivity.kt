@@ -2,11 +2,13 @@ package com.base.baselib.base
 
 import android.content.Context
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
 import android.graphics.PixelFormat
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -53,8 +55,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //适配屏幕
-        FitUtil.autoFit(this, false, application);
+        // 设置为横屏
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
+        //适配屏幕  width = 480
+        FitUtil.autoFit(this, false, application)
         //状态栏
         initStatusBar(getStatusBarColor())
         // 获取布局id
@@ -67,6 +72,7 @@ abstract class BaseActivity : AppCompatActivity() {
         ARouter.getInstance().inject(this)
 
         initTipView()
+
         initViews()
     }
 

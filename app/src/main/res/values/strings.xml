@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CarControl</string>
+
+    <!--main-->
+    <string name="main_menu_app">app</string>
+    <string name="main_menu_music">music</string>
+    <string name="main_menu_car">car</string>
+    <string name="main_menu_setting">setting</string>
 </resources>

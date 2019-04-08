@@ -42,4 +42,10 @@
     <dimen name="sp_24">24sp</dimen>
 
 
+
+    <dimen name="text_normal">@dimen/sp_14</dimen>
+
+
+
+
 </resources>
