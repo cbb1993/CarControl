@@ -1,0 +1,26 @@
+
+组件化架构：
+    基础架构
+
+                            appModule
+                 moduleA     moduleB      moduleC
+                            baseModule
+                   eventModule         dataModule
+
+
+事件传递：
+    EventBus3.x : 会产生太多事件类，为了解耦，我们创建event module作为base的底层module
+组件跳转：
+    ARouter
+数据存储：
+    greenDao
+权限管理：
+    AndPermission : 可以在各自模板申请，编译会合并
+依赖管理：
+    config.gradle 统一管理
+网络框架：
+    retrofit
+其他重要依赖：
+    RxJava
+基本架构
+    MVVM -- LiveData + ViewModel

@@ -1,0 +1,14 @@
+
+1. layout 命名  module_type_name
+        pay_activity_order
+        pay_frag_order
+
+2. id   viewType_name
+
+3. 类前面、关键的业务逻辑点  写上注释
+
+4. color dimens string  应在values中定义和调用
+
+
+
+
