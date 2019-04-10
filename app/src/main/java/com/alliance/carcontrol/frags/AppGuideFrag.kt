@@ -8,12 +8,12 @@ import com.base.baselib.base.BaseFragment
  * Created by 斌斌.
  * Date: 2019/4/8
  * Time: 16:36
- * describe: 主页展示其他app
+ * describe: 主页展示车况
  */
 
-class AppAppsFrag : BaseFragment(){
+class AppGuideFrag : BaseFragment(){
     override fun attachLayoutRes(): Int {
-        return R.layout.app_frag_apps
+        return R.layout.app_frag_home
     }
 
     override fun initView(view: View) {

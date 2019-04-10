@@ -11,9 +11,9 @@ import com.base.baselib.base.BaseFragment
  * describe: 主页展示车况
  */
 
-class AppCarFrag : BaseFragment(){
+class AppHomeFrag : BaseFragment(){
     override fun attachLayoutRes(): Int {
-        return R.layout.app_frag_car
+        return R.layout.app_frag_home
     }
 
     override fun initView(view: View) {

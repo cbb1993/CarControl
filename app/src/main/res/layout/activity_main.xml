@@ -1,48 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal"
+android:background="#000">
+    <ImageView
+            android:layout_margin="20dp"
+            android:id="@+id/iv_"
+            android:src="@drawable/app_select_menu_phone_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
+    <ImageView
+            android:layout_margin="20dp"
+            android:src="@mipmap/menu_button_phone_n"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <ImageView
+            android:layout_margin="20dp"
+            android:src="@mipmap/tap_button_phone_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     <RadioGroup
-        android:id="@+id/rg_menu"
-        android:layout_width="80dp"
-        android:layout_height="match_parent"
-        android:background="#fff"
-        android:gravity="center"
-        android:orientation="vertical">
+            android:visibility="gone"
+            android:id="@+id/rg_menu"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="#333"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
         <RadioButton
-            android:id="@+id/rb_app"
-            android:textColor="@drawable/app_select_menu_text_color"
-            android:button="@null"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="@string/main_menu_app" />
+                android:id="@+id/rb_phone"
+                android:background="@drawable/app_select_menu_phone"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/rb_music"
-            android:textColor="@drawable/app_select_menu_text_color"
-            android:button="@null"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="@string/main_menu_music" />
+                android:id="@+id/rb_music"
+                android:background="@drawable/app_select_menu_music"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/rb_car"
-            android:textColor="@drawable/app_select_menu_text_color"
-            android:button="@null"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="@string/main_menu_car" />
+                android:id="@+id/rb_home"
+                android:background="@drawable/app_select_menu_home"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/rb_setting"
-            android:textColor="@drawable/app_select_menu_text_color"
-            android:button="@null"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="@string/main_menu_setting" />
+                android:id="@+id/rb_guide"
+                android:background="@drawable/app_select_menu_guide"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <RadioButton
+                android:id="@+id/rb_setting"
+                android:background="@drawable/app_select_menu_setting"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
     </RadioGroup>
 
     <FrameLayout
-        android:id="@+id/main_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 </LinearLayout>

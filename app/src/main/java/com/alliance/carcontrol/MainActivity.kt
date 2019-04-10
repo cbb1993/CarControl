@@ -2,10 +2,7 @@ package com.alliance.carcontrol
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.alliance.carcontrol.frags.AppAppsFrag
-import com.alliance.carcontrol.frags.AppCarFrag
-import com.alliance.carcontrol.frags.AppMusicFrag
-import com.alliance.carcontrol.frags.AppSettingFrag
+import com.alliance.carcontrol.frags.*
 import com.base.baselib.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,30 +24,37 @@ class MainActivity : BaseActivity() {
     override fun initViews() {
         super.initViews()
         initFragment()
+
+
+        iv_.setOnClickListener {
+            iv_.isActivated = !iv_.isActivated
+        }
     }
 
 
     private fun initFragment() {
         rg_menu.setOnCheckedChangeListener { _, checkedId ->
             when(checkedId){
-                R.id.rb_app -> setIndexSelected(0)
+                R.id.rb_phone -> setIndexSelected(0)
                 R.id.rb_music -> setIndexSelected(1)
-                R.id.rb_car -> setIndexSelected(2)
-                R.id.rb_setting -> setIndexSelected(3)
+                R.id.rb_home -> setIndexSelected(2)
+                R.id.rb_guide -> setIndexSelected(3)
+                R.id.rb_setting -> setIndexSelected(4)
             }
         }
 
-        val appAppsFrag = AppAppsFrag()
+        val appPhoneFrag = AppPhoneFrag()
         val appMusicFrag = AppMusicFrag()
-        val appCarFrag = AppCarFrag()
+        val appHomeFrag = AppHomeFrag()
+        val appGuideFrag = AppGuideFrag()
         val appSettingFrag = AppSettingFrag()
 
-        mFragments = listOf(appAppsFrag, appMusicFrag, appCarFrag, appSettingFrag)
+        mFragments = listOf(appPhoneFrag, appMusicFrag, appHomeFrag,appGuideFrag, appSettingFrag)
 
         val ft = supportFragmentManager.beginTransaction()
         ft.add(R.id.main_content, mFragments[mIndex]).commit()
 
-        rg_menu.check(R.id.rb_car)
+        rg_menu.check(R.id.rb_home)
 
     }
     private fun setIndexSelected(index: Int) {
