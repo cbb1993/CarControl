@@ -2,9 +2,14 @@ package com.alliance.carcontrol
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.DebugUtils
 import android.util.Log
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import com.alliance.carcontrol.frags.*
 import com.base.baselib.base.BaseActivity
+import com.base.baselib.utils.DensityUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -21,21 +26,109 @@ class MainActivity : BaseActivity() {
 
     private lateinit var mFragments: List<Fragment>
     private var mIndex = 2
-
+    private lateinit var mAnimationlarge: Animation  //放大
+    private lateinit var mAnimationOriginalSize: Animation //恢复原来大小
     override fun initViews() {
         super.initViews()
+        mAnimationlarge = AnimationUtils.loadAnimation(this, R.anim.app_scale_large)
+        mAnimationOriginalSize = AnimationUtils.loadAnimation(this, R.anim.app_scale_original)
         initFragment()
     }
 
-
     private fun initFragment() {
-        rg_menu.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.rb_phone -> setIndexSelected(0)
-                R.id.rb_music -> setIndexSelected(1)
-                R.id.rb_home -> setIndexSelected(2)
-                R.id.rb_guide -> setIndexSelected(3)
-                R.id.rb_setting -> setIndexSelected(4)
+        rb_phone.setOnClickListener {
+            if (!rb_phone.isActivated) {
+                rb_phone.isActivated = !rb_phone.isActivated
+                rb_phone.startAnimation(mAnimationlarge)
+                //关闭其他按钮动画
+                rb_music.isActivated = false
+                rb_music.startAnimation(mAnimationOriginalSize)
+
+                rb_home.isActivated = false
+                rb_home.startAnimation(mAnimationOriginalSize)
+
+                rb_guide.isActivated = false
+                rb_guide.startAnimation(mAnimationOriginalSize)
+
+                rb_setting.isActivated = false
+                rb_setting.startAnimation(mAnimationOriginalSize)
+                setIndexSelected(0)
+            }
+        }
+        rb_music.setOnClickListener {
+            if (!rb_music.isActivated) {
+                rb_music.isActivated = !rb_music.isActivated
+                rb_music.startAnimation(mAnimationlarge)
+                //关闭其他按钮动画
+                rb_phone.isActivated = false
+                rb_phone.startAnimation(mAnimationOriginalSize)
+
+                rb_home.isActivated = false
+                rb_home.startAnimation(mAnimationOriginalSize)
+
+                rb_guide.isActivated = false
+                rb_guide.startAnimation(mAnimationOriginalSize)
+
+                rb_setting.isActivated = false
+                rb_setting.startAnimation(mAnimationOriginalSize)
+                setIndexSelected(1)
+            }
+        }
+        rb_home.setOnClickListener {
+            if (!rb_home.isActivated) {
+                rb_home.isActivated = !rb_home.isActivated
+                rb_home.startAnimation(mAnimationlarge)
+                //关闭其他按钮动画
+                rb_phone.isActivated = false
+                rb_phone.startAnimation(mAnimationOriginalSize)
+
+                rb_music.isActivated = false
+                rb_music.startAnimation(mAnimationOriginalSize)
+
+                rb_guide.isActivated = false
+                rb_guide.startAnimation(mAnimationOriginalSize)
+
+                rb_setting.isActivated = false
+                rb_setting.startAnimation(mAnimationOriginalSize)
+                setIndexSelected(2)
+            }
+        }
+        rb_guide.setOnClickListener {
+            if (!rb_guide.isActivated) {
+                rb_guide.isActivated = !rb_guide.isActivated
+                rb_guide.startAnimation(mAnimationlarge)
+                //关闭其他按钮动画
+                rb_phone.isActivated = false
+                rb_phone.startAnimation(mAnimationOriginalSize)
+
+                rb_music.isActivated = false
+                rb_music.startAnimation(mAnimationOriginalSize)
+
+                rb_home.isActivated = false
+                rb_home.startAnimation(mAnimationOriginalSize)
+
+                rb_setting.isActivated = false
+                rb_setting.startAnimation(mAnimationOriginalSize)
+                setIndexSelected(3)
+            }
+        }
+        rb_setting.setOnClickListener {
+            if (!rb_setting.isActivated) {
+                rb_setting.isActivated = !rb_setting.isActivated
+                rb_setting.startAnimation(mAnimationlarge)
+                //关闭其他按钮动画
+                rb_phone.isActivated = false
+                rb_phone.startAnimation(mAnimationOriginalSize)
+
+                rb_music.isActivated = false
+                rb_music.startAnimation(mAnimationOriginalSize)
+
+                rb_home.isActivated = false
+                rb_home.startAnimation(mAnimationOriginalSize)
+
+                rb_guide.isActivated = false
+                rb_guide.startAnimation(mAnimationOriginalSize)
+                setIndexSelected(4)
             }
         }
 
@@ -50,7 +143,10 @@ class MainActivity : BaseActivity() {
         val ft = supportFragmentManager.beginTransaction()
         ft.add(R.id.main_content, mFragments[mIndex]).commit()
 
-        rg_menu.check(R.id.rb_home)
+        if (!rb_home.isActivated) {
+            rb_home.isActivated = !rb_home.isActivated
+            rb_home.startAnimation(mAnimationlarge)
+        }
         iv_nav.setImageResource(R.mipmap.menu_line_home)
 
     }
@@ -59,7 +155,7 @@ class MainActivity : BaseActivity() {
         if (mIndex == index) {
             return
         }
-        when(index){
+        when (index) {
             0 -> iv_nav.setImageResource(R.mipmap.menu_line_phone)
             1 -> iv_nav.setImageResource(R.mipmap.menu_line_music)
             2 -> iv_nav.setImageResource(R.mipmap.menu_line_home)

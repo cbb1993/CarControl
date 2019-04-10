@@ -1,71 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="horizontal"
-              android:background="#000">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:orientation="horizontal">
 
     <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+        android:layout_width="134dp"
+        android:layout_height="match_parent">
 
-        <RadioGroup
-                android:layout_centerVertical="true"
-                android:id="@+id/rg_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/rg_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <com.alliance.carcontrol.MyRadioButton
-                    android:id="@+id/rb_phone"
-                    app:src_normal="@mipmap/menu_button_phone_n"
-                    app:src_checked="@mipmap/tap_button_phone_s"
-                    android:button="@null"
-                    android:layout_width="150px"
-                    android:layout_height="150px"/>
-            <com.alliance.carcontrol.MyRadioButton
-                    android:id="@+id/rb_music"
-                    android:gravity="center"
-                    app:src_normal="@mipmap/menu_button_music_n"
-                    app:src_checked="@mipmap/tap_button_music_s"
-                    android:button="@null"
-                    android:layout_width="150px"
-                    android:layout_height="150px"/>
-            <com.alliance.carcontrol.MyRadioButton
-                    android:id="@+id/rb_home"
-                    app:src_normal="@mipmap/menu_button_home_n"
-                    app:src_checked="@mipmap/tap_button_home_s"
-                    android:button="@null"
-                    android:layout_width="150px"
-                    android:layout_height="150px"/>
-            <com.alliance.carcontrol.MyRadioButton
-                    android:id="@+id/rb_guide"
-                    app:src_normal="@mipmap/menu_button_nav_n"
-                    app:src_checked="@mipmap/tap_button_nav_s"
-                    android:button="@null"
-                    android:layout_width="150px"
-                    android:layout_height="150px"/>
-            <com.alliance.carcontrol.MyRadioButton
-                    android:id="@+id/rb_setting"
-                    app:src_normal="@mipmap/menu_button_setting_n"
-                    app:src_checked="@mipmap/tap_button_setting_s"
-                    android:button="@null"
-                    android:layout_width="150px"
-                    android:layout_height="150px"/>
-        </RadioGroup>
+            <ImageView
+                android:id="@+id/rb_phone"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/app_select_menu_phone" />
+
+            <ImageView
+                android:id="@+id/rb_music"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/app_select_menu_music" />
+
+            <ImageView
+                android:id="@+id/rb_home"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/app_select_menu_home" />
+
+            <ImageView
+                android:id="@+id/rb_guide"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/app_select_menu_guide" />
+
+            <ImageView
+                android:id="@+id/rb_setting"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitStart"
+                android:layout_margin="10dp"
+                android:src="@drawable/app_select_menu_setting" />
+        </LinearLayout>
 
         <ImageView
-                android:id="@+id/iv_nav"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:id="@+id/iv_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:translationY="9dp"/>
 
     </RelativeLayout>
+
     <FrameLayout
-            android:id="@+id/main_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

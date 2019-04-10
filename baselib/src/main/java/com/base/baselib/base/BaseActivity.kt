@@ -59,7 +59,7 @@ abstract class BaseActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 
         //适配屏幕  width = 480
-        FitUtil.autoFit(this, false, application)
+//        FitUtil.autoFit(this, false, application)
         //状态栏
         initStatusBar(getStatusBarColor())
         // 获取布局id
