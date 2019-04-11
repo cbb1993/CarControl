@@ -9,4 +9,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@mipmap/home" />
+    <View
+        android:id="@+id/btn_home_app"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="250dp"/>
 </RelativeLayout>
