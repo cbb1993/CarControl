@@ -1,13 +1,19 @@
 package com.alliance.carcontrol
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.util.DebugUtils
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.alliance.carcontrol.frags.*
+import com.alliance.map.MapTestActivity
 import com.base.baselib.base.BaseActivity
 import com.base.baselib.utils.DensityUtil
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,6 +39,16 @@ class MainActivity : BaseActivity() {
         mAnimationlarge = AnimationUtils.loadAnimation(this, R.anim.app_scale_large)
         mAnimationOriginalSize = AnimationUtils.loadAnimation(this, R.anim.app_scale_original)
         initFragment()
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+            //申请WRITE_EXTERNAL_STORAGE权限
+
+            var ss   = Array<String>(1) {Manifest.permission.ACCESS_FINE_LOCATION}
+            ActivityCompat.requestPermissions(this, ss ,
+                1)
+        }
+
+        startActivity(Intent(this,MapTestActivity::class.java))
     }
 
     private fun initFragment() {

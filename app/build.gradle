@@ -5,6 +5,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'aliance'
+            keyPassword '123456'
+            storeFile file('key.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId "com.alliance.carcontrol"
@@ -16,19 +24,25 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName : project.getName()]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
+
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "Nanosic_OTA_${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
+            outputFileName = "Car_Control_${variant.versionCode}-${variant.versionName}-${releaseTime()}.apk"
         }
     }
 }
@@ -38,8 +52,9 @@ static def releaseTime() {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':baselib')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation project(':baselib')
+    implementation project(':map')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     annotationProcessor rootProject.ext.arouterCompiler
 }

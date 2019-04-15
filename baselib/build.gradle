@@ -40,6 +40,7 @@ dependencies {
     api project(':event')
     api project(':data')
 
+
     annotationProcessor rootProject.ext.arouterCompiler
 
 }
