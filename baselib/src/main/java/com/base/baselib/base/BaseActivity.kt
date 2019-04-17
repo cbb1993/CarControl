@@ -73,6 +73,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         initTipView()
 
+        initViews(savedInstanceState)
         initViews()
     }
 
@@ -150,6 +151,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * 初始化views
      *
      */
+    open fun initViews(savedInstanceState: Bundle?) {}
     open fun initViews() {}
 
 

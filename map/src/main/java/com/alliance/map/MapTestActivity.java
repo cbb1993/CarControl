@@ -1,5 +1,10 @@
 package com.alliance.map;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import com.amap.api.location.AMapLocation;
@@ -54,6 +59,23 @@ public class MapTestActivity extends BaseActivity implements AMapLocationListene
     @Override
     public void initViews() {
         super.initViews();
+
+
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                != PackageManager.PERMISSION_GRANTED) {
+//            //申请WRITE_EXTERNAL_STORAGE权限
+//
+//        }
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_PHONE_STATE
+                } ,
+                1);
+
+
         mlocationClient = new AMapLocationClient(this);
         //初始化定位参数
         mLocationOption = new AMapLocationClientOption();
@@ -63,6 +85,7 @@ public class MapTestActivity extends BaseActivity implements AMapLocationListene
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
         //设置定位间隔,单位毫秒,默认为2000ms
         mLocationOption.setInterval(2000);
+        mLocationOption.setOnceLocation(true);
         //设置定位参数
         mlocationClient.setLocationOption(mLocationOption);
         // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
@@ -71,6 +94,15 @@ public class MapTestActivity extends BaseActivity implements AMapLocationListene
         // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
         //启动定位
 //        mlocationClient.startLocation();
+
+
+        findViewById(R.id.nav).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MapTestActivity.this, RestRouteShowActivity.class));
+            }
+        });
+
         findViewById(R.id.btn_naviPage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

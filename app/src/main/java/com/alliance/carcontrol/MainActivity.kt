@@ -39,14 +39,6 @@ class MainActivity : BaseActivity() {
         mAnimationlarge = AnimationUtils.loadAnimation(this, R.anim.app_scale_large)
         mAnimationOriginalSize = AnimationUtils.loadAnimation(this, R.anim.app_scale_original)
         initFragment()
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
-            //申请WRITE_EXTERNAL_STORAGE权限
-
-            var ss   = Array<String>(1) {Manifest.permission.ACCESS_FINE_LOCATION}
-            ActivityCompat.requestPermissions(this, ss ,
-                1)
-        }
 
         startActivity(Intent(this,MapTestActivity::class.java))
     }
