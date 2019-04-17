@@ -25,7 +25,7 @@ public class MapTestActivity extends BaseActivity {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.READ_PHONE_STATE
-                } ,
+                },
                 1);
 
         findViewById(R.id.nav).setOnClickListener(new View.OnClickListener() {
@@ -39,8 +39,9 @@ public class MapTestActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MapTestActivity.this, MapCalculateRouteActivity.class);
-                intent.putExtra(MapCalculateRouteActivity.START_NAVI,new RouteBean("我的位置",39.90759, 116.392582));
-                intent.putExtra(MapCalculateRouteActivity.END_NAVI,new RouteBean("北京朝阳沟（5号线）",39.993537, 116.472875));
+                intent.putExtra(MapCalculateRouteActivity.START_NAVI, new RouteBean("我的位置", 39.90759, 116.392582));
+                intent.putExtra(MapCalculateRouteActivity.END_NAVI, new RouteBean("北京朝阳沟（5号线）", 39.993537, 116.472875));
+                intent.putExtra("city", "上海市");
                 startActivity(intent);
 
             }
