@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import com.alliance.map.naviui.MapCalculateRouteActivity;
 import com.alliance.map.search.SearchPoiActivity;
+import com.alliance.map.search.SearchTwoPoiActivity;
 import com.alliance.map.view.NavDestPop;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -36,6 +38,7 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
 
 
     public static final int REQUEST_POI_CODE = 101;
+    public static final int REQUEST_ROUTE_CODE = 102;
 
     private NavDestPop navDestPop ;
 
@@ -54,10 +57,8 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
         navDestPop =new NavDestPop(this);
 
         Button gpsnavi = (Button) findViewById(R.id.gpsnavi);
-        Button emulatornavi = (Button) findViewById(R.id.emulatornavi);
         tv_search.setOnClickListener(this);
         gpsnavi.setOnClickListener(this);
-        emulatornavi.setOnClickListener(this);
         mRouteMapView = (MapView) findViewById(R.id.navi_view);
         mRouteMapView.onCreate(savedInstanceState);
         mAmap = mRouteMapView.getMap();
@@ -79,6 +80,7 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
             public void onMyLocationChange(Location location) {
                 if (location != null && location.getExtras() != null) {
                     city = location.getExtras().getString("City");
+                    navDestPop.setCity(city);
                 }
             }
         });
@@ -120,16 +122,11 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
             intent.putExtra("city", city);
             startActivityForResult(intent, REQUEST_POI_CODE);
         }else if (i == R.id.gpsnavi) {
-            Intent gpsintent = new Intent(getApplicationContext(), RouteNaviActivity.class);
-            gpsintent.putExtra("gps", true);
-            startActivity(gpsintent);
-
-        } else if (i == R.id.emulatornavi) {
-            Intent intent = new Intent(getApplicationContext(), RouteNaviActivity.class);
-            intent.putExtra("gps", false);
+            Intent intent = new Intent(RestRouteShowActivity.this, MapCalculateRouteActivity.class);
+            intent.putExtra(MapCalculateRouteActivity.START_NAVI,  new RouteBean("我的位置",
+                    mAmap.getMyLocation().getLatitude(),mAmap.getMyLocation().getLongitude()));
+            intent.putExtra("city",city);
             startActivity(intent);
-
-        } else {
         }
     }
 
@@ -139,10 +136,10 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null && data.getParcelableExtra("tip") != null) {
-            Tip tip = data.getParcelableExtra("tip");
-
-            if (requestCode == REQUEST_POI_CODE) {//搜索位置
+        if (data != null ) {
+            if (requestCode == REQUEST_POI_CODE&& data.getParcelableExtra("tip") != null) {
+                //搜索位置
+                Tip tip = data.getParcelableExtra("tip");
                 tv_search.setText(tip.getName());
                 LatLng latLng = new LatLng(tip.getPoint().getLatitude(), tip.getPoint().getLongitude());
                 if (marker == null) {
@@ -151,8 +148,8 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
                     marker.setPosition(latLng);
                 }
                 mAmap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(latLng, 18, 0, 0)), 500, null);
-                navDestPop.showAtLocation(tv_search, Gravity.BOTTOM,0,0);
 
+                navDestPop.showAtLocation(tv_search, Gravity.BOTTOM,0,0);
                 LatLonPoint start = new LatLonPoint (mAmap.getMyLocation().getLatitude(), mAmap.getMyLocation().getLongitude());
                 navDestPop.setData(start,tip);
             }

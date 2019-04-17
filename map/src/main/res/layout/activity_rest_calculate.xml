@@ -20,36 +20,17 @@
             android:layout_width="300dp"
             android:layout_height="40dp"/>
 
-    <LinearLayout
-            android:layout_marginBottom="20dp"
+    <Button
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
+            android:padding="3dp"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            android:id="@+id/gpsnavi"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <Button
-                android:padding="3dp"
-                android:textColor="@color/white"
-                android:background="@drawable/border_blue"
-                android:id="@+id/gpsnavi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="开始导航"
-                android:textSize="14dp"/>
-
-        <Button
-                android:layout_marginLeft="20dp"
-                android:padding="3dp"
-                android:textColor="@color/white"
-                android:background="@drawable/border_blue"
-                android:id="@+id/emulatornavi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="模拟导航"
-                android:textSize="14dp"/>
-    </LinearLayout>
+            android:checked="false"
+            android:text="导航"
+            android:textSize="14dp"/>
 
 
 

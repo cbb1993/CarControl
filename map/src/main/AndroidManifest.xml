@@ -57,9 +57,8 @@
                   android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name=".RouteNaviActivity"
                   android:configChanges="orientation|keyboardHidden|screenSize"/>
-        <activity android:name=".search.SearchPoiActivity2"
-                  android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name=".search.SearchPoiActivity"/>
+        <activity android:name=".search.SearchTwoPoiActivity"/>
     </application>
 
 </manifest>
