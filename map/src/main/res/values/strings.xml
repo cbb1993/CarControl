@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">map</string>
+    <string name="calulate_route_startnavi">开始导航</string>
 </resources>

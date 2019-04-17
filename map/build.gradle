@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
@@ -12,7 +14,6 @@ android {
 
     }
 
-
     buildTypes {
         release {
             minifyEnabled false
@@ -21,30 +22,21 @@ android {
     }
 
 
-
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
     }
 
-    splits {
-        abi {
-            enable true
-            reset()
-            include 'armeabi'
-//            include 'armeabi'//, 'armeabi-v7a', 'arm64-v8a', 'mips', 'x86', 'x86_64'
-        }
-    }
 
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api project(':baselib')
     api files('libs/AMap3DMap_6.8.0_AMapNavi_6.7.0_20190401.jar')
     api files('libs/AMap_Location_V4.5.0_20190121.jar')
     api files('libs/AMap_Search_V6.5.0_20180930.jar')
     api files('libs/Msc.jar')
+    api project(':baselib')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
