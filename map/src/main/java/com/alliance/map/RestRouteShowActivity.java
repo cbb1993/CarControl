@@ -125,6 +125,10 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
             Intent intent = new Intent(RestRouteShowActivity.this, MapCalculateRouteActivity.class);
             intent.putExtra(MapCalculateRouteActivity.START_NAVI,  new RouteBean("我的位置",
                     mAmap.getMyLocation().getLatitude(),mAmap.getMyLocation().getLongitude()));
+
+            if(navDestPop.getEndBean()!=null){
+                intent.putExtra(MapCalculateRouteActivity.END_NAVI,navDestPop.getEndBean());
+            }
             intent.putExtra("city",city);
             startActivity(intent);
         }

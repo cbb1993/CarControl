@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import com.alliance.map.MapTestActivity;
 import com.alliance.map.R;
 import com.alliance.map.RouteBean;
 import com.alliance.map.naviui.MapCalculateRouteActivity;
@@ -107,4 +106,7 @@ public class NavDestPop extends PopupWindow implements DistanceSearch.OnDistance
     }
 
 
+    public RouteBean getEndBean() {
+        return endBean;
+    }
 }
