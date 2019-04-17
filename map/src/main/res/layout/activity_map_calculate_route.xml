@@ -1,187 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey"
-    tools:context=".MapCalculateRouteActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grey"
+                tools:context=".naviui.MapCalculateRouteActivity">
 
     <Button
-        android:id="@+id/calculate_route_start_navi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:background="@color/colorBlue"
-        android:text="@string/calulate_route_startnavi"
-        android:textColor="#fff" />
+            android:id="@+id/calculate_route_start_navi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:background="@color/colorBlue"
+            android:text="@string/calulate_route_startnavi"
+            android:textColor="#fff"/>
 
     <TextView
-        android:id="@+id/calculate_route_navi_overview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/calculate_route_start_navi"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textColor="@color/colorBlack" />
+            android:id="@+id/calculate_route_navi_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/calculate_route_start_navi"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"/>
 
     <LinearLayout
-        android:id="@+id/calculate_route_strategy_tab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/calculate_route_navi_overview"
-        android:background="@color/white"
-        android:orientation="horizontal">
+            android:id="@+id/calculate_route_strategy_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/calculate_route_navi_overview"
+            android:background="@color/white"
+            android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/route_line_one"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:orientation="vertical"
-            android:visibility="gone">
+                android:id="@+id/route_line_one"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:visibility="gone">
 
             <View
-                android:id="@+id/route_line_one_view"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorBlue" />
+                    android:id="@+id/route_line_one_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorBlue"/>
 
             <TextView
-                android:id="@+id/route_line_one_strategy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                    android:id="@+id/route_line_one_strategy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
 
             <TextView
-                android:id="@+id/route_line_one_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                    android:id="@+id/route_line_one_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/route_line_one_distance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                    android:id="@+id/route_line_one_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/route_line_two"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:orientation="vertical"
-            android:visibility="gone">
+                android:id="@+id/route_line_two"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:visibility="gone">
 
             <View
-                android:id="@+id/route_line_two_view"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorBlue"
-                android:visibility="gone" />
+                    android:id="@+id/route_line_two_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorBlue"
+                    android:visibility="gone"/>
 
             <TextView
-                android:id="@+id/route_line_two_strategy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                    android:id="@+id/route_line_two_strategy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
 
             <TextView
-                android:id="@+id/route_line_two_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                    android:id="@+id/route_line_two_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/route_line_two_distance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                    android:id="@+id/route_line_two_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/route_line_three"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:orientation="vertical"
-            android:visibility="gone">
+                android:id="@+id/route_line_three"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:visibility="gone">
 
             <View
-                android:id="@+id/route_line_three_view"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorBlue"
-                android:visibility="gone" />
+                    android:id="@+id/route_line_three_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorBlue"
+                    android:visibility="gone"/>
 
             <TextView
-                android:id="@+id/route_line_three_strategy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                    android:id="@+id/route_line_three_strategy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
 
             <TextView
-                android:id="@+id/route_line_three_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                    android:id="@+id/route_line_three_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/route_line_three_distance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                    android:id="@+id/route_line_three_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/calculate_route_strategy_tab">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/calculate_route_strategy_tab">
 
         <com.amap.api.maps.MapView
-            android:id="@+id/navi_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+                android:id="@+id/navi_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         <ImageView
-            android:id="@+id/strategy_choose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="25dp"
-            android:background="@color/colorDark"
-            android:clickable="true"
-            android:src="@drawable/route_car_result_prefer_icon"/>
+                android:id="@+id/strategy_choose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorDark"
+                android:clickable="true"
+                android:src="@drawable/route_car_result_prefer_icon"/>
 
         <ImageView
-            android:id="@+id/map_traffic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorDark"
-            android:clickable="true"
-            android:src="@mipmap/map_traffic_hl_white" />
+                android:id="@+id/map_traffic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="70dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorDark"
+                android:clickable="true"
+                android:src="@mipmap/map_traffic_hl_white"/>
 
     </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clickable="true"
+            android:background="@color/colorBlueahpa">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="从"
+                android:textColor="@color/white"/>
+
+        <TextView
+                android:id="@+id/tv_start"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:paddingLeft="5dp"
+                android:hint="起始位置"
+                android:textColor="@color/black"
+                android:background="@drawable/border_white_r6"
+                android:layout_width="250dp"
+                android:layout_height="35dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="到"
+                android:textColor="@color/white"/>
+
+        <TextView
+                android:id="@+id/tv_end"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:paddingLeft="5dp"
+                android:hint="终点位置"
+                android:textColor="@color/black"
+                android:background="@drawable/border_white_r6"
+                android:layout_width="250dp"
+                android:layout_height="35dp"/>
+    </LinearLayout>
 
 </RelativeLayout>

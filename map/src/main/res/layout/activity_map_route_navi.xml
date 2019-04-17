@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapRouteNaviActivity">
+    tools:context=".naviui.MapRouteNaviActivity">
 
     <com.amap.api.navi.AMapNaviView
         android:id="@+id/map_route_navi"

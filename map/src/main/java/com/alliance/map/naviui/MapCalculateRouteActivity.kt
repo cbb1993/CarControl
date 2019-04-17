@@ -1,4 +1,4 @@
-package com.alliance.map
+package com.alliance.map.naviui
 
 
 import android.content.Intent
@@ -6,8 +6,13 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.SparseArray
 import android.view.View
+import android.widget.Toast
+import com.alliance.map.R
+import com.alliance.map.RouteBean
+import com.alliance.map.Utils
 import com.amap.api.maps.AMap
 import com.amap.api.maps.CameraUpdateFactory
+import com.amap.api.maps.model.MyLocationStyle
 import com.amap.api.navi.AMapNavi
 import com.amap.api.navi.model.AMapNaviPath
 import com.amap.api.navi.model.NaviLatLng
@@ -21,6 +26,8 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
     companion object {
         const val ROUTE_UNSELECTED_TRANSPARENCY = 0.3f
         const val ROUTE_SELECTED_TRANSPARENCY = 1f
+        const val START_NAVI = "startNaviBean"
+        const val END_NAVI = "endNaviBean"
     }
 
     /**
@@ -28,6 +35,8 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
      */
     private var mAMapNavi: AMapNavi? = null
     private var mAMap: AMap? = null
+    private var startNavi: RouteBean? = null
+    private var endNavi: RouteBean? = null
     val endLatlng = NaviLatLng(39.90759, 116.392582)
     val startLatlng = NaviLatLng(39.993537, 116.472875)
     val startList = ArrayList<NaviLatLng>() //起始坐标集合
@@ -37,6 +46,7 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
     var strategyFlag = 0
     var routeID = -1
     var zindex = 1  //路线的权值，重合路线情况下，权值高的路线会覆盖权值低的路线
+    var myLocationStyle: MyLocationStyle = MyLocationStyle()
 
     override fun getLayoutId(): Int {
         return R.layout.activity_map_calculate_route
@@ -50,8 +60,20 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
     }
 
     private fun initNavi() {
-        startList.add(startLatlng)
-        endList.add(endLatlng)
+        startNavi = intent.getSerializableExtra(START_NAVI) as RouteBean?
+        endNavi = intent.getSerializableExtra(END_NAVI) as RouteBean?
+        tv_start.text = startNavi?.routeName
+        tv_end.text = endNavi?.routeName
+        //将起始和终点位置放入列表
+        if (startNavi != null) startList.add(NaviLatLng(startNavi?.latitude!!, startNavi?.longitude!!))
+        if (endNavi != null) endList.add(NaviLatLng(endNavi?.latitude!!, endNavi?.longitude!!))
+        //当没有给定起始和终点位置时首先定位到当前位置
+        if (startNavi == null || endNavi == null) {
+            myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE)
+            mAMap?.myLocationStyle = myLocationStyle
+            mAMap?.isMyLocationEnabled = true
+            mAMap?.moveCamera(CameraUpdateFactory.zoomTo(18f))
+        }
         mAMapNavi = AMapNavi.getInstance(applicationContext)
         mAMapNavi?.addAMapNaviListener(this)
     }
@@ -63,6 +85,8 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
         route_line_one.setOnClickListener(this)
         route_line_two.setOnClickListener(this)
         route_line_three.setOnClickListener(this)
+        tv_start.setOnClickListener(this)
+        tv_end.setOnClickListener(this)
 
         if (mAMap == null) {
             mAMap = navi_view.map
@@ -82,6 +106,8 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
             R.id.route_line_one -> focuseRouteLine(true, false, false)
             R.id.route_line_two -> focuseRouteLine(false, true, false)
             R.id.route_line_three -> focuseRouteLine(false, false, true)
+            R.id.tv_start -> Toast.makeText(this@MapCalculateRouteActivity, "起始位置", Toast.LENGTH_LONG).show()
+            R.id.tv_end -> Toast.makeText(this@MapCalculateRouteActivity, "终点", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -320,6 +346,7 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
         val disDes = Utils.getFriendlyDistance(path.allLength)
         route_line_three_distance.setText(disDes)
     }
+
     /**
      * 控制方案tab是否显示
      */

@@ -1,4 +1,4 @@
-package com.alliance.map
+package com.alliance.map.naviui
 
 import com.amap.api.navi.AMapNaviListener
 import com.amap.api.navi.model.*

@@ -38,8 +38,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application>
-        <activity android:name=".MapRouteNaviActivity"></activity>
-        <activity android:name=".MapCalculateRouteActivity" /> <!-- 设置key -->
+        <activity android:name=".naviui.MapRouteNaviActivity"></activity>
+        <activity android:name=".naviui.MapCalculateRouteActivity" /> <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="4e38c3b112bababacc70580e00361abd" /> <!-- 定位需要的服务 -->

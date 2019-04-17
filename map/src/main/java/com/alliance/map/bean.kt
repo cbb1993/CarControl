@@ -16,6 +16,6 @@ import java.io.Serializable
  */
 data class RouteBean(
     val routeName: String,
-    val longitude: Double,
-    val latitude: Double
+    val latitude: Double,
+    val longitude: Double
 ) : Serializable

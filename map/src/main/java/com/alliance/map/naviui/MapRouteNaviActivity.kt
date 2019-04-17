@@ -1,6 +1,7 @@
-package com.alliance.map
+package com.alliance.map.naviui
 
 import android.os.Bundle
+import com.alliance.map.R
 import com.amap.api.navi.AMapNavi
 import com.amap.api.navi.AMapNaviViewListener
 import com.amap.api.navi.enums.NaviType

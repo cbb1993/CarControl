@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
+import com.alliance.map.naviui.MapCalculateRouteActivity;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.navi.AmapNaviPage;
-import com.amap.api.navi.AmapNaviParams;
-import com.amap.api.navi.INaviInfoCallback;
-import com.amap.api.navi.model.AMapNaviLocation;
 import com.base.baselib.base.BaseActivity;
 
 import java.text.SimpleDateFormat;
@@ -104,7 +101,10 @@ public class MapTestActivity extends BaseActivity implements AMapLocationListene
         findViewById(R.id.btn_naviPage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  startActivity( new Intent(MapTestActivity.this,MapCalculateRouteActivity.class));
+                Intent intent = new Intent(MapTestActivity.this, MapCalculateRouteActivity.class);
+                intent.putExtra(MapCalculateRouteActivity.START_NAVI,new RouteBean("我的位置",39.90759, 116.392582));
+                intent.putExtra(MapCalculateRouteActivity.END_NAVI,new RouteBean("北京朝阳沟（5号线）",39.993537, 116.472875));
+                startActivity(intent);
 //                AmapNaviPage.getInstance().showRouteActivity(MapTestActivity.this,
 //                        new AmapNaviParams(null), new INaviInfoCallback() {
 //                            @Override
