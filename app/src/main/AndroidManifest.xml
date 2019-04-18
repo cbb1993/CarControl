@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.alliance.carcontrol"
-          android:installLocation="internalOnly">
+          package="com.alliance.carcontrol">
 
     <application
             android:name="com.base.baselib.BaseApplication"
@@ -13,26 +12,16 @@
             android:supportsRtl="true"
             android:theme="@style/BaseTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity
-                android:name=".MainActivity"
-                android:launchMode="singleTask"
-                android:configChanges="keyboardHidden|orientation|screenSize">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
-                <!--<category android:name="android.intent.category.HOME" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
             </intent-filter>
         </activity>
 
-        <receiver android:name=".receiver.BootBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.ACTION_LOCKED_BOOT_COMPLETED"/>
-
-                <category android:name="android.intent.category.HOME"/>
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
