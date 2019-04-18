@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:maxLevel="10"
+            android:drawable="@drawable/ac_airvolume1"/>
+    <item
+            android:maxLevel="20"
+            android:drawable="@drawable/ac_airvolume2"/>
+    <item
+            android:maxLevel="30"
+            android:drawable="@drawable/ac_airvolume3"/>
+    <item
+            android:maxLevel="40"
+            android:drawable="@drawable/ac_airvolume4"/>
+    <item
+            android:maxLevel="50"
+            android:drawable="@drawable/ac_airvolume5"/>
+    <item
+            android:maxLevel="60"
+            android:drawable="@drawable/ac_airvolume6"/>
+    <item
+            android:maxLevel="70"
+            android:drawable="@drawable/ac_airvolume7"/>
+</level-list>

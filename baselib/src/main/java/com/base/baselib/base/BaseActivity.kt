@@ -57,7 +57,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // 设置为横屏
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //适配屏幕  width = 480
 //        FitUtil.autoFit(this, false, application)
         //状态栏

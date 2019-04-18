@@ -1,18 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-            android:id="@+id/iv_menu"
+    <LinearLayout
+            android:id="@+id/ll_home_body"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/home" />
-    <View
-        android:id="@+id/btn_home_app"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="250dp"/>
+            android:background="@color/black"
+            android:orientation="horizontal">
+
+        <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@mipmap/home_content_bg"
+                android:layout_marginLeft="20dp">
+
+            <TextView
+                    android:id="@+id/tv_home_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/textview_w_blod"
+                    android:layout_marginLeft="30dp"
+                    android:text="上海"
+                    android:layout_marginTop="80dp"/>
+
+            <TextView
+                    android:id="@+id/tv_home_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:layout_toRightOf="@id/tv_home_city"
+                    android:layout_marginLeft="20dp"
+                    android:text="01月01日"
+                    style="@style/textview_w_blod"/>
+
+            <TextView
+                    android:id="@+id/tv_home_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="80sp"
+                    android:layout_below="@id/tv_home_city"
+                    android:layout_marginLeft="40dp"
+                    android:text="20°"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"/>
+
+            <TextView
+                    android:id="@+id/tv_home_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_below="@id/tv_home_city"
+                    android:layout_marginLeft="140dp"
+                    android:text="晴"
+                    android:textStyle="bold"
+                    android:layout_marginTop="80dp"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+
+                <LinearLayout
+                        android:id="@+id/ll_home_air"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_button_air_n"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="空调"
+                            android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/ll_home_car"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_button_car_n"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="车辆"
+                            android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/ll_home_app"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_button_air_n"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="应用"
+                            android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/ll_home_login"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_button_app_n"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:text="登陆"
+                            android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:orientation="vertical"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center">
+
+                <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        style="@style/textview_w_blod"
+                        android:text="周杰伦-听妈妈的话（原版演唱）"
+                        android:ellipsize="marquee"
+                        android:singleLine="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp">
+
+                    <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp">
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/home_bg_album"
+                                android:layout_centerInParent="true"/>
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/home_button_stop_n"
+                                android:layout_centerInParent="true"/>
+                    </RelativeLayout>
+
+                    <ImageView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_button_playlist_n"/>
+
+                    <ImageView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_button_next_n"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp">
+
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/progress"/>
+
+                    <ImageView
+                            android:layout_marginLeft="140dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/progress_bar"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/textview_w_blod"
+                        android:layout_marginLeft="50dp"
+                        android:text="已行驶里程"
+                        android:layout_marginTop="80dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="160"
+                        android:layout_marginTop="80dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="KM"
+                        android:layout_marginTop="80dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+            android:id="@+id/frag_home_child"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:visibility="gone"/>
+
 </RelativeLayout>

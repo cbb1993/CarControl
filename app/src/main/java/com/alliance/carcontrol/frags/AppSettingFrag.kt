@@ -38,7 +38,7 @@ class AppSettingFrag : BaseFragment() {
                     rb_system.startAnimation(mAnimationlarge)
                     rb_car.startAnimation(mAnimationOriginalSize)
                 }
-                R.id.rb_car ->{
+                R.id.rb_car -> {
                     iv_tab_2.visibility = View.VISIBLE
                     iv_tab_1.visibility = View.INVISIBLE
                     rb_car.startAnimation(mAnimationlarge)

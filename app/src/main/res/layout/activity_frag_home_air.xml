@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/ac_bg"
+                android:paddingTop="30dp">
+
+    <ImageView
+            android:id="@+id/btn_home_air_back"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/button_back"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"/>
+
+    <LinearLayout
+            android:id="@+id/ll_home_air_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+        <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_poweronoff"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_ac"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_dual"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_auto"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_seatheating"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_seatventilation"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_defrost"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_defrostmax"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_outsideloop"/>
+
+        <com.base.baselib.ImageViewActivit
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_select_btn_pm25"/>
+
+        <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_below="@id/ll_home_air_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="120dp">
+
+            <com.base.baselib.ImageViewActivit
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/app_select_btn_up"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_below="@id/tv_home_city"
+                    android:text="20°"
+                    android:textStyle="bold"
+                    android:layout_marginTop="60dp"/>
+
+            <com.base.baselib.ImageViewActivit
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/app_select_btn_down"
+                    android:layout_marginTop="60dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="120dp"
+                android:layout_alignParentRight="true">
+
+            <com.base.baselib.ImageViewActivit
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/app_select_btn_up"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_below="@id/tv_home_city"
+                    android:text="20°"
+                    android:textStyle="bold"
+                    android:layout_marginTop="60dp"/>
+
+            <com.base.baselib.ImageViewActivit
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/app_select_btn_down"
+                    android:layout_marginTop="60dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="250dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/app_select_btn_mode_hesd"/>
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="40dp"
+                            android:src="@drawable/app_select_btn_mode_body"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/app_select_picture_head"/>
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/app_select_picture_body"/>
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/app_select_picture_foot"/>
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ac_icon_seat"
+                            android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/app_select_btn_mode_foot"/>
+
+                    <com.base.baselib.ImageViewActivit
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="40dp"
+                            android:src="@drawable/app_select_btn_mode_defrost"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="30dp">
+
+                <com.base.baselib.ImageViewActivit
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/app_select_btn_smallair"/>
+
+                <ImageView
+                        android:id="@+id/iv_home_air_volum"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/app_select_ac_airvolume"/>
+
+                <com.base.baselib.ImageViewActivit
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/app_select_btn_bigair"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

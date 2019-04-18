@@ -171,6 +171,7 @@ class MainActivity : BaseActivity() {
             4 -> iv_nav.setImageResource(R.mipmap.menu_line_setting)
         }
 
+
         val ft = supportFragmentManager.beginTransaction()
         ft.hide(mFragments[mIndex])
 //        //判断是否添加
