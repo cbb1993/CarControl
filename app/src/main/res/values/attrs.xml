@@ -1,6 +1,3 @@
 <resources>
-    <declare-styleable name="MyRadioButton">
-        <attr name="src_normal" format="reference" />
-        <attr name="src_checked" format="reference" />
-    </declare-styleable>
+
 </resources>

@@ -7,5 +7,7 @@
 
     <color name="app_menu_text_checked">#D81B60</color>
     <color name="app_menu_text_normal">#666666</color>
+    <color name="rb_green">#02cfd9</color>
+    <color name="btn_green">#083745</color>
 
 </resources>

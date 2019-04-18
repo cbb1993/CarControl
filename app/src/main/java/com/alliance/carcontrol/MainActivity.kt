@@ -40,8 +40,7 @@ class MainActivity : BaseActivity() {
         mAnimationlarge = AnimationUtils.loadAnimation(this, R.anim.app_scale_large)
         mAnimationOriginalSize = AnimationUtils.loadAnimation(this, R.anim.app_scale_original)
         initFragment()
-
-        startActivity(Intent(this, MapTestActivity::class.java))
+//        startActivity(Intent(this, MapTestActivity::class.java))
     }
 
     private fun initFragment() {
@@ -171,7 +170,6 @@ class MainActivity : BaseActivity() {
             3 -> iv_nav.setImageResource(R.mipmap.menu_line_nav)
             4 -> iv_nav.setImageResource(R.mipmap.menu_line_setting)
         }
-
 
         val ft = supportFragmentManager.beginTransaction()
         ft.hide(mFragments[mIndex])

@@ -1,8 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-    <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
-    android:src="@mipmap/phone"/>
-</LinearLayout>
+    android:layout_height="match_parent">
+
+    <RadioGroup
+            android:id="@+id/rg_tab"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/tab_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+        <RadioButton
+                android:gravity="center"
+                android:id="@+id/rb_call"
+                android:textColor="@drawable/app_select_rb_text_color"
+                android:layout_gravity="center"
+                android:text="@string/call"
+                android:button="@null"
+                android:layout_width="60dp"
+                android:layout_height="40dp"/>
+
+        <RadioButton
+                android:id="@+id/rb_contact"
+                android:textColor="@drawable/app_select_rb_text_color"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text="@string/contact"
+                android:button="@null"
+                android:layout_width="60dp"
+                android:layout_height="40dp"/>
+
+        <RadioButton
+                android:id="@+id/rb_bluetooth"
+                android:textColor="@drawable/app_select_rb_text_color"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text="@string/bluetooth"
+                android:button="@null"
+                android:layout_width="60dp"
+                android:layout_height="40dp"/>
+    </RadioGroup>
+
+    <LinearLayout
+            android:id="@+id/ll_iv"
+            android:gravity="center"
+            android:layout_marginTop="53dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_tab_1"
+                android:src="@mipmap/tap_line"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_tab_2"
+                android:src="@mipmap/tap_line"
+                android:layout_marginLeft="20dp"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_tab_3"
+                android:src="@mipmap/tap_line"
+                android:layout_marginLeft="20dp"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <FrameLayout
+            android:layout_below="@id/ll_iv"
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+</RelativeLayout>
