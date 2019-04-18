@@ -20,6 +20,7 @@ class AppHomeAirActivity : BaseActivity() {
 
     override fun initViews() {
         super.initViews()
+
         btn_home_air_back.setOnClickListener {
             this@AppHomeAirActivity.finish()
         }
