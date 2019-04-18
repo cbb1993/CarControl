@@ -2,9 +2,10 @@
           package="com.base.baselib">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
     <application>
 
-        <receiver android:name=".receiver.NetworkChangeReceiver" />
-
+        <receiver android:name=".receiver.NetworkChangeReceiver"/>
     </application>
 </manifest>
