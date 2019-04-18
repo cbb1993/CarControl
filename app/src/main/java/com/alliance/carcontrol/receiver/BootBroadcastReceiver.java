@@ -18,7 +18,7 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(ACTION_BOOT)) { //开机启动完成后，要做的事情 
+        if (intent.getAction().equals(ACTION_BOOT) || intent.getAction().equals(Intent.ACTION_LOCKED_BOOT_COMPLETED)) { //开机启动完成后，要做的事情 
             Log.e("-----","====");
             Intent myIntent = new Intent(context, MainActivity.class);
             myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

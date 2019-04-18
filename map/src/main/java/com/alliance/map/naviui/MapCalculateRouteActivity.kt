@@ -71,12 +71,12 @@ class MapCalculateRouteActivity : BaseActivity(), AMap.OnMapLoadedListener, MapN
         if (startNavi != null) startList.add(NaviLatLng(startNavi?.latitude!!, startNavi?.longitude!!))
         if (endNavi != null) endList.add(NaviLatLng(endNavi?.latitude!!, endNavi?.longitude!!))
         //当没有给定起始和终点位置时首先定位到当前位置
-        if (startNavi == null || endNavi == null) {
-            myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE)
-            mAMap?.myLocationStyle = myLocationStyle
-            mAMap?.isMyLocationEnabled = true
-            mAMap?.moveCamera(CameraUpdateFactory.zoomTo(18f))
-        }
+//        if (startNavi == null || endNavi == null) {
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE)
+        mAMap?.myLocationStyle = myLocationStyle
+        mAMap?.isMyLocationEnabled = true
+        mAMap?.moveCamera(CameraUpdateFactory.zoomTo(18f))
+//        }
         mAMapNavi = AMapNavi.getInstance(applicationContext)
         mAMapNavi?.addAMapNaviListener(this)
     }
