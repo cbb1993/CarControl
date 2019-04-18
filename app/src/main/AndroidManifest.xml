@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.alliance.carcontrol">
+          package="com.alliance.carcontrol"
+          android:installLocation="internalOnly">
 
     <application
             android:name="com.base.baselib.BaseApplication"
@@ -19,6 +20,8 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <!--<category android:name="android.intent.category.HOME" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
             </intent-filter>
         </activity>
 
