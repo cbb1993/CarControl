@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.util.DebugUtils
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -40,7 +41,7 @@ class MainActivity : BaseActivity() {
         mAnimationOriginalSize = AnimationUtils.loadAnimation(this, R.anim.app_scale_original)
         initFragment()
 
-        startActivity(Intent(this,MapTestActivity::class.java))
+        startActivity(Intent(this, MapTestActivity::class.java))
     }
 
     private fun initFragment() {
@@ -189,6 +190,10 @@ class MainActivity : BaseActivity() {
 
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return true
     }
 
 }
