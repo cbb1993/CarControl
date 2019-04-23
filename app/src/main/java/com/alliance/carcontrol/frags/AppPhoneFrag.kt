@@ -74,7 +74,7 @@ class AppPhoneFrag : BaseFragment(){
 
 
         val ft = activity?.supportFragmentManager?.beginTransaction()
-        ft?.add(R.id.main_content, mFragments[mIndex])?.commit()
+        ft?.add(R.id.phone_main_content, mFragments[mIndex])?.commit()
     }
 
 
@@ -89,7 +89,7 @@ class AppPhoneFrag : BaseFragment(){
         ft?.hide(mFragments[mIndex])
 //        //判断是否添加
         if (!mFragments[index].isAdded) {
-            ft?.add(R.id.main_content, mFragments[index])?.show(mFragments[index])
+            ft?.add(R.id.phone_main_content, mFragments[index])?.show(mFragments[index])
         } else {
             ft?.show(mFragments[index])
         }

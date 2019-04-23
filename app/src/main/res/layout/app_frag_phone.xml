@@ -79,7 +79,7 @@
 
     <FrameLayout
             android:layout_below="@id/ll_iv"
-            android:id="@+id/main_content"
+            android:id="@+id/phone_main_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 </RelativeLayout>
