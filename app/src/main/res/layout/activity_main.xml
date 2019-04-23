@@ -7,49 +7,49 @@
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:layout_width="134dp"
+        android:layout_width="110dp"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/rg_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/rb_phone"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/app_select_menu_phone" />
 
             <ImageView
                 android:id="@+id/rb_music"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/app_select_menu_music" />
 
             <ImageView
                 android:id="@+id/rb_home"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="10dp"
                 android:src="@drawable/app_select_menu_home" />
 
             <ImageView
                 android:id="@+id/rb_guide"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="10dp"
                 android:src="@drawable/app_select_menu_guide" />
 
             <ImageView
                 android:id="@+id/rb_setting"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:scaleType="fitStart"
                 android:layout_margin="10dp"
                 android:src="@drawable/app_select_menu_setting" />

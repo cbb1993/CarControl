@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginTop="25dp">
 
         <Space
                 android:layout_width="0dp"
@@ -26,53 +27,53 @@
                 android:layout_weight="1"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_poweronoff"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_ac"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_dual"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_auto"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_seatheating"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_seatventilation"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_defrost"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_defrostmax"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_outsideloop"/>
 
         <com.base.baselib.ImageViewActivit
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/app_select_btn_pm25"/>
 
         <Space
@@ -168,13 +169,13 @@
                         android:orientation="vertical">
 
                     <com.base.baselib.ImageViewActivit
-                            android:layout_width="200dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:src="@drawable/app_select_btn_mode_hesd"/>
 
                     <com.base.baselib.ImageViewActivit
-                            android:layout_width="200dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="40dp"
                             android:src="@drawable/app_select_btn_mode_body"/>
                 </LinearLayout>
@@ -201,7 +202,8 @@
 
                     <com.base.baselib.ImageViewActivit
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="76dp"
+                            android:layout_centerVertical="true"
                             android:src="@mipmap/ac_icon_seat"
                             android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -212,13 +214,13 @@
                         android:orientation="vertical">
 
                     <com.base.baselib.ImageViewActivit
-                            android:layout_width="200dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:src="@drawable/app_select_btn_mode_foot"/>
 
                     <com.base.baselib.ImageViewActivit
-                            android:layout_width="200dp"
-                            android:layout_height="100dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="40dp"
                             android:src="@drawable/app_select_btn_mode_defrost"/>
                 </LinearLayout>

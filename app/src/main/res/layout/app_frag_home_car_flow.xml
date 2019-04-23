@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/black"
+              android:orientation="horizontal">
+
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="61"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="km/226km"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="续航里程："/>
+
+            <ProgressBar
+                    android:id="@+id/car_flow_progress_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="7.5dp"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/progressbar_bg"
+                    android:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="60dp"
+                android:gravity="center_vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="电池状态："/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="20%"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/battery_red"/>
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/electricity_red"
+                    android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/car02"
+                android:layout_centerInParent="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:text="制动（从电机流到电池）"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="100dp"
+                android:layout_marginRight="50dp"/>
+    </RelativeLayout>
+</LinearLayout>

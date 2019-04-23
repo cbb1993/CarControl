@@ -9,7 +9,7 @@ import android.util.DisplayMetrics;
 
 public class FitUtil {
     private static float width = 1920;//手动设置为设计图的宽,适配将根据宽为基准,也可以设置高,但是推荐设 置宽,如果不需要px=dp则不设置也行
-    private static int dpi = 480;//手动设置设计图的dpi,不知道可以设计图的宽除2测试一下
+    private static int dpi = 960;//手动设置设计图的dpi,不知道可以设计图的宽除2测试一下
     private static float nativeWidth = 0;//真实屏幕的宽,不需要手动改
     private static float sRoncompatDennsity;
     private static float sRoncompatScaledDensity;

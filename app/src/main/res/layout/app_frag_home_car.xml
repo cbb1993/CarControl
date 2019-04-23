@@ -5,9 +5,93 @@
                 android:background="@color/black">
 
     <ImageView
-            android:id="@+id/btn_back"
+            android:id="@+id/car_btn_back"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@mipmap/button_back"
             android:layout_margin="30dp"/>
+
+    <RadioGroup
+            android:id="@+id/rg_car_tab"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+
+        <RadioButton
+                android:gravity="center"
+                android:id="@+id/rb_flow"
+                android:textColor="@drawable/app_select_rb_text_color"
+                android:layout_gravity="center"
+                android:text="@string/home_car_flow"
+                android:button="@null"
+                android:layout_width="80dp"
+                android:layout_height="40dp"/>
+
+        <RadioButton
+                android:id="@+id/rb_history"
+                android:textColor="@drawable/app_select_rb_text_color"
+                android:gravity="center"
+                android:layout_marginLeft="30dp"
+                android:text="@string/home_car_history"
+                android:button="@null"
+                android:layout_width="80dp"
+                android:layout_height="40dp"/>
+    </RadioGroup>
+
+    <LinearLayout
+            android:id="@+id/ll_title"
+            android:gravity="center"
+            android:layout_marginTop="53dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_flow"
+                android:background="@mipmap/tap_line"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_history"
+                android:background="@mipmap/tap_line"
+                android:layout_marginLeft="30dp"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/ll_flow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_title"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:layout_marginEnd="0dp"
+            android:paddingLeft="30dp">
+
+        <include layout="@layout/app_frag_home_car_flow"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/ll_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_title"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:layout_marginEnd="0dp"
+            android:visibility="gone"
+            android:paddingLeft="30dp">
+
+        <include layout="@layout/app_frag_home_car_history"/>
+    </LinearLayout>
 </RelativeLayout>
