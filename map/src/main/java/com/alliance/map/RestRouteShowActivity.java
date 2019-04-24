@@ -19,9 +19,11 @@ import com.amap.api.maps.model.*;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.help.Tip;
 import com.base.baselib.base.BaseActivity;
+import com.base.baselib.base.BaseFragment;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class RestRouteShowActivity extends BaseActivity implements OnClickListener {
+public class RestRouteShowActivity extends BaseFragment implements OnClickListener {
 
     private AMap mAmap;
     /**
@@ -40,21 +42,29 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
     public static final int REQUEST_POI_CODE = 101;
     public static final int REQUEST_ROUTE_CODE = 102;
 
-    private NavDestPop navDestPop ;
+    private NavDestPop navDestPop;
 
 
     @Override
-    public int getLayoutId() {
+    public int attachLayoutRes() {
         return R.layout.activity_rest_calculate;
     }
 
     @Override
-    public void initViews(@Nullable Bundle savedInstanceState) {
-        super.initViews(savedInstanceState);
+    public void initView(@NotNull View view) {
 
+    }
+
+    @Override
+    public void lazyLoad() {
+
+    }
+
+    @Override
+    public void initView(@Nullable Bundle savedInstanceState) {
         tv_search = findViewById(R.id.tv_search);
 
-        navDestPop =new NavDestPop(this);
+        navDestPop = new NavDestPop(getActivity());
 
         Button gpsnavi = (Button) findViewById(R.id.gpsnavi);
         tv_search.setOnClickListener(this);
@@ -92,44 +102,45 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
      * 方法必须重写
      */
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         mRouteMapView.onResume();
     }
+
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         mRouteMapView.onPause();
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mRouteMapView.onSaveInstanceState(outState);
     }
+
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         mRouteMapView.onDestroy();
     }
-
 
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.tv_search) {
-            Intent intent = new Intent(RestRouteShowActivity.this, SearchPoiActivity.class);
+            Intent intent = new Intent(getActivity(), SearchPoiActivity.class);
             intent.putExtra("city", city);
             startActivityForResult(intent, REQUEST_POI_CODE);
-        }else if (i == R.id.gpsnavi) {
-            Intent intent = new Intent(RestRouteShowActivity.this, MapCalculateRouteActivity.class);
-            intent.putExtra(MapCalculateRouteActivity.START_NAVI,  new RouteBean("我的位置",
-                    mAmap.getMyLocation().getLatitude(),mAmap.getMyLocation().getLongitude()));
+        } else if (i == R.id.gpsnavi) {
+            Intent intent = new Intent(getActivity(), MapCalculateRouteActivity.class);
+            intent.putExtra(MapCalculateRouteActivity.START_NAVI, new RouteBean("我的位置",
+                    mAmap.getMyLocation().getLatitude(), mAmap.getMyLocation().getLongitude()));
 
-            if(navDestPop.getEndBean()!=null){
-                intent.putExtra(MapCalculateRouteActivity.END_NAVI,navDestPop.getEndBean());
+            if (navDestPop.getEndBean() != null) {
+                intent.putExtra(MapCalculateRouteActivity.END_NAVI, navDestPop.getEndBean());
             }
-            intent.putExtra("city",city);
+            intent.putExtra("city", city);
             startActivity(intent);
         }
     }
@@ -137,7 +148,9 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
     // 保存上一次的marker
     private Marker marker;
 
-    @Override
+
+
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null ) {
@@ -158,7 +171,7 @@ public class RestRouteShowActivity extends BaseActivity implements OnClickListen
                 navDestPop.setData(start,tip);
             }
         }
-    }
+    }*/
 
 
 }

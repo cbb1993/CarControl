@@ -40,6 +40,10 @@ abstract class BaseFragment : Fragment() {
      */
     abstract fun initView(view: View)
 
+    open fun initView(savedInstanceState: Bundle?) {
+
+    }
+
     /**
      * 懒加载
      */
@@ -56,6 +60,7 @@ abstract class BaseFragment : Fragment() {
     open fun doReConnected() {
         lazyLoad()
     }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(attachLayoutRes(), null)
@@ -74,9 +79,15 @@ abstract class BaseFragment : Fragment() {
             EventBus.getDefault().register(this)
         }
         isViewPrepare = true
+        initView(savedInstanceState)
         initView(view)
         lazyLoadDataIfPrepared()
     }
+
+    public fun <T : View> findViewById(res: Int): T {
+        return view!!.findViewById<T>(res)
+    }
+
 
     private fun lazyLoadDataIfPrepared() {
         if (userVisibleHint && isViewPrepare && !hasLoadData) {

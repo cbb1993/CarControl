@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.app_frag_guide.*
  * describe: 主页展示车况
  */
 
-class AppGuideFrag : BaseFragment(){
+class AppNavFrag : BaseFragment(){
     override fun attachLayoutRes(): Int {
         return R.layout.app_frag_guide
     }

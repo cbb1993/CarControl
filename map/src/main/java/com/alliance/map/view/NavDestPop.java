@@ -13,9 +13,9 @@ import com.alliance.map.R;
 import com.alliance.map.RouteBean;
 import com.alliance.map.naviui.MapCalculateRouteActivity;
 import com.amap.api.services.core.LatLonPoint;
-import com.amap.api.services.help.Tip;
 import com.amap.api.services.route.DistanceResult;
 import com.amap.api.services.route.DistanceSearch;
+import com.base.event.LocationSearchEvent;
 
 import java.text.DecimalFormat;
 
@@ -76,16 +76,16 @@ public class NavDestPop extends PopupWindow implements DistanceSearch.OnDistance
         this.city = city;
     }
 
-    public void setData(LatLonPoint start, Tip tip) {
+    public void setData(LatLonPoint start, LocationSearchEvent event) {
 
         startBean = new RouteBean("我的位置",start.getLatitude(),start.getLongitude());
-        endBean = new RouteBean(tip.getName(),tip.getPoint().getLatitude(),tip.getPoint().getLongitude());
+        endBean = new RouteBean(event.getName(),event.getLatitude(),event.getLongitude());
 
-        tv_dest.setText(tip.getName());
-        tv_location.setText(tip.getAddress());
+        tv_dest.setText(event.getName());
+        tv_location.setText(event.getAddress());
 
         DistanceSearch.DistanceQuery query = new DistanceSearch.DistanceQuery();
-        LatLonPoint end = new LatLonPoint(tip.getPoint().getLatitude(), tip.getPoint().getLongitude());
+        LatLonPoint end = new LatLonPoint(event.getLatitude(), event.getLongitude());
         query.addOrigins(start);
         query.setDestination(end);
         query.setType(DistanceSearch.TYPE_DISTANCE);

@@ -16,6 +16,16 @@
     <string name="mobile_connect">手机互联</string>
     <string name="audio">音频</string>
 
+    <string name="doors_and_windows_control">门窗控制</string>
+    <string name="atmosphere_lamp">氛围灯</string>
+    <string name="driving_assistance_system_control">驾驶辅助系统控制</string>
+    <string name="tailgate_control">尾门控制</string>
+    <string name="chair_setting">座椅设置</string>
+    <string name="wireless_charging_of_Mobile_setting">手机无线充电设置</string>
+    <string name="out_mirror_light_setting">外后视镜设置</string>
+    <string name="out_light_setting">外灯设置</string>
+    <string name="others">其他</string>
+
 
     <string name="call">拨号</string>
     <string name="contact">联系人</string>

@@ -1,22 +1,13 @@
 package com.alliance.carcontrol
 
-import android.Manifest
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
-import android.util.DebugUtils
-import android.util.Log
 import android.view.KeyEvent
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.alliance.carcontrol.frags.*
-import com.alliance.map.MapTestActivity
+import com.alliance.map.RestRouteShowActivity
 import com.base.baselib.base.BaseActivity
-import com.base.baselib.utils.DensityUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -143,7 +134,7 @@ class MainActivity : BaseActivity() {
         val appPhoneFrag = AppPhoneFrag()
         val appMusicFrag = AppMusicFrag()
         val appHomeFrag = AppHomeFrag()
-        val appGuideFrag = AppGuideFrag()
+        val appGuideFrag = RestRouteShowActivity()
         val appSettingFrag = AppSettingFrag()
 
         mFragments = listOf(appPhoneFrag, appMusicFrag, appHomeFrag, appGuideFrag, appSettingFrag)
