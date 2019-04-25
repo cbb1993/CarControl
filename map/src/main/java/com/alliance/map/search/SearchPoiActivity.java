@@ -22,11 +22,17 @@ import com.amap.api.services.help.Tip;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.base.baselib.base.BaseActivity;
+import com.base.baselib.base.BaseFragment;
+import com.base.baselib.utils.KbUtil;
+import com.base.event.FragmentBack;
+import com.base.event.LocationSearchEvent;
+import org.greenrobot.eventbus.EventBus;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchPoiActivity extends BaseActivity implements TextWatcher,
+public class SearchPoiActivity extends BaseFragment implements TextWatcher,
         Inputtips.InputtipsListener, AdapterView.OnItemClickListener, View.OnTouchListener, View.OnClickListener, PoiSearch.OnPoiSearchListener {
     private AutoCompleteTextView mKeywordText;
     private ListView resultList;
@@ -38,22 +44,27 @@ public class SearchPoiActivity extends BaseActivity implements TextWatcher,
 
 
     @Override
-    public int getLayoutId() {
-        return R.layout.activity_search_poi;
+    public int attachLayoutRes() {
+         return R.layout.activity_search_poi;
     }
 
     @Override
-    public void initViews() {
-        super.initViews();
+    public void initView(@NotNull View view) {
 
-        city = getIntent().getStringExtra("city");
+    }
+
+    @Override
+    public void lazyLoad() {
+        city = getArguments().getString("city");
         findViews();
         resultList.setOnItemClickListener(this);
         resultList.setOnTouchListener(this);
         tvMsg.setVisibility(View.GONE);
         mKeywordText.addTextChangedListener(this);
         mKeywordText.requestFocus();
+        KbUtil.showKeyboard(mKeywordText);
     }
+
 
 
     private void findViews() {
@@ -62,7 +73,7 @@ public class SearchPoiActivity extends BaseActivity implements TextWatcher,
         loadingBar = (ProgressBar) findViewById(R.id.search_loading);
         tvMsg = (TextView) findViewById(R.id.tv_msg);
         tv_search= findViewById(R.id.tv_search);
-
+        View tv_back= findViewById(R.id.tv_back);
 
         setLoadingVisible(false);
 
@@ -72,13 +83,23 @@ public class SearchPoiActivity extends BaseActivity implements TextWatcher,
                 if(mKeywordText.length()!=0){
                     setLoadingVisible(true);
                     InputtipsQuery inputquery = new InputtipsQuery(mKeywordText.getText().toString(), city);
-                    Inputtips inputTips = new Inputtips(getApplicationContext(), inputquery);
+                    Inputtips inputTips = new Inputtips(getActivity(), inputquery);
                     inputTips.setInputtipsListener(SearchPoiActivity.this);
                     inputTips.requestInputtipsAsyn();
                 }
             }
         });
+
+
+        tv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                KbUtil.closeKeyboard(getActivity());
+                EventBus.getDefault().post(new FragmentBack());
+            }
+        });
     }
+
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,7 +117,7 @@ public class SearchPoiActivity extends BaseActivity implements TextWatcher,
                 if (!TextUtils.isEmpty(newText)) {
                     setLoadingVisible(true);
                     InputtipsQuery inputquery = new InputtipsQuery(newText, city);
-                    Inputtips inputTips = new Inputtips(getApplicationContext(), inputquery);
+                    Inputtips inputTips = new Inputtips(getActivity(), inputquery);
                     inputTips.setInputtipsListener(this);
                     inputTips.requestInputtipsAsyn();
                 } else {
@@ -136,10 +157,18 @@ public class SearchPoiActivity extends BaseActivity implements TextWatcher,
 //                poiSearch.searchPOIIdAsyn(selectedPoi.getPoiId());
 //            }
 
-            Intent intent = new Intent(this, RestRouteShowActivity.class);
-            intent.putExtra("tip", tip);
-            setResult(RestRouteShowActivity.REQUEST_POI_CODE, intent);
-            finish();
+            LocationSearchEvent event = new LocationSearchEvent(
+                    RestRouteShowActivity.REQUEST_POI_CODE,
+                    tip.getName(),tip.getAddress(),tip.getPoint().getLatitude(),tip.getPoint().getLongitude());
+
+            EventBus.getDefault().post(event);
+
+            KbUtil.closeKeyboard(getActivity());
+
+//            Intent intent = new Intent(getActivity(), RestRouteShowActivity.class);
+//            intent.putExtra("tip", tip);
+//            setResult(RestRouteShowActivity.REQUEST_POI_CODE, intent);
+//            finish();
         }
     }
 
@@ -162,7 +191,7 @@ public class SearchPoiActivity extends BaseActivity implements TextWatcher,
                     resultList.setVisibility(View.GONE);
                 } else {
                     resultList.setVisibility(View.VISIBLE);
-                    resultAdapter = new SearchResultAdapter(getApplicationContext(), mCurrentTipList);
+                    resultAdapter = new SearchResultAdapter(getActivity(), mCurrentTipList);
                     resultList.setAdapter(resultAdapter);
                     resultAdapter.notifyDataSetChanged();
                 }
@@ -196,5 +225,6 @@ public class SearchPoiActivity extends BaseActivity implements TextWatcher,
     public void onPoiItemSearched(PoiItem poiItem, int errorCode) {
 
     }
+
 
 }

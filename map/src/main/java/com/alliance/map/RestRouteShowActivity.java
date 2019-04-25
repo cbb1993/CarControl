@@ -3,6 +3,7 @@ package com.alliance.map;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,12 +19,21 @@ import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.*;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.help.Tip;
+import com.amap.api.services.route.DistanceResult;
+import com.amap.api.services.route.DistanceSearch;
 import com.base.baselib.base.BaseActivity;
 import com.base.baselib.base.BaseFragment;
+import com.base.event.FragmentBack;
+import com.base.event.LocationSearchEvent;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class RestRouteShowActivity extends BaseFragment implements OnClickListener {
+import java.text.DecimalFormat;
+
+public class RestRouteShowActivity extends BaseFragment implements OnClickListener ,DistanceSearch.OnDistanceSearchListener{
 
     private AMap mAmap;
     /**
@@ -42,7 +52,6 @@ public class RestRouteShowActivity extends BaseFragment implements OnClickListen
     public static final int REQUEST_POI_CODE = 101;
     public static final int REQUEST_ROUTE_CODE = 102;
 
-    private NavDestPop navDestPop;
 
 
     @Override
@@ -60,15 +69,28 @@ public class RestRouteShowActivity extends BaseFragment implements OnClickListen
 
     }
 
+    private View search_poi_content,ll_detail,btn_line;
+
+    private TextView tv_dest,tv_far,tv_location;
+
     @Override
     public void initView(@Nullable Bundle savedInstanceState) {
+
+        EventBus.getDefault().register(this);
+
         tv_search = findViewById(R.id.tv_search);
 
-        navDestPop = new NavDestPop(getActivity());
+        search_poi_content = findViewById(R.id.search_poi_content);
+        ll_detail = findViewById(R.id.ll_detail);
 
-        Button gpsnavi = (Button) findViewById(R.id.gpsnavi);
+        tv_dest = findViewById(R.id.tv_dest);
+        tv_far = findViewById(R.id.tv_far);
+        tv_location = findViewById(R.id.tv_location);
+        btn_line = findViewById(R.id.btn_line);
+
+        btn_line.setOnClickListener(this);
+
         tv_search.setOnClickListener(this);
-        gpsnavi.setOnClickListener(this);
         mRouteMapView = (MapView) findViewById(R.id.navi_view);
         mRouteMapView.onCreate(savedInstanceState);
         mAmap = mRouteMapView.getMap();
@@ -79,21 +101,22 @@ public class RestRouteShowActivity extends BaseFragment implements OnClickListen
 
 
         mAmap.setMyLocationEnabled(true);
-        mAmap.moveCamera(CameraUpdateFactory.zoomTo(18));
+        mAmap.moveCamera(CameraUpdateFactory.zoomTo(16));
 
 
         mAmap.setMyLocationStyle(myLocationStyle);
         mAmap.getUiSettings().setMyLocationButtonEnabled(true);
+        mAmap.getUiSettings().setZoomControlsEnabled(false);
 
         mAmap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
                 if (location != null && location.getExtras() != null) {
                     city = location.getExtras().getString("City");
-                    navDestPop.setCity(city);
                 }
             }
         });
+
 
 
     }
@@ -122,6 +145,7 @@ public class RestRouteShowActivity extends BaseFragment implements OnClickListen
     @Override
     public void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         mRouteMapView.onDestroy();
     }
 
@@ -129,49 +153,89 @@ public class RestRouteShowActivity extends BaseFragment implements OnClickListen
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.tv_search) {
-            Intent intent = new Intent(getActivity(), SearchPoiActivity.class);
-            intent.putExtra("city", city);
-            startActivityForResult(intent, REQUEST_POI_CODE);
-        } else if (i == R.id.gpsnavi) {
+//            Intent intent = new Intent(getActivity(), SearchPoiActivity.class);
+//            intent.putExtra("city", city);
+//            startActivityForResult(intent, REQUEST_POI_CODE);
+            SearchPoiActivity frag = new SearchPoiActivity();
+            Bundle bundle = new Bundle();
+            bundle.putString("city", city);
+            frag.setArguments(bundle);
+            showFrag(frag);
+
+        } else if (i == R.id.btn_line) {
             Intent intent = new Intent(getActivity(), MapCalculateRouteActivity.class);
             intent.putExtra(MapCalculateRouteActivity.START_NAVI, new RouteBean("我的位置",
                     mAmap.getMyLocation().getLatitude(), mAmap.getMyLocation().getLongitude()));
 
-            if (navDestPop.getEndBean() != null) {
-                intent.putExtra(MapCalculateRouteActivity.END_NAVI, navDestPop.getEndBean());
+            if (endBean != null) {
+                intent.putExtra(MapCalculateRouteActivity.END_NAVI, endBean);
             }
             intent.putExtra("city", city);
             startActivity(intent);
         }
     }
 
+    private void showFrag(Fragment fragment) {
+        ll_detail.setVisibility(View.VISIBLE);
+        search_poi_content.setVisibility(View.VISIBLE);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.search_poi_content, fragment).commit();
+    }
+
+    private void dismissFrag() {
+        search_poi_content.setVisibility(View.GONE);
+    }
+
+
     // 保存上一次的marker
     private Marker marker;
 
-
-
-   /* @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (data != null ) {
-            if (requestCode == REQUEST_POI_CODE&& data.getParcelableExtra("tip") != null) {
-                //搜索位置
-                Tip tip = data.getParcelableExtra("tip");
-                tv_search.setText(tip.getName());
-                LatLng latLng = new LatLng(tip.getPoint().getLatitude(), tip.getPoint().getLongitude());
-                if (marker == null) {
-                    marker = mAmap.addMarker(new MarkerOptions().position(latLng).title(tip.getName()).snippet(""));
-                }else {
-                    marker.setPosition(latLng);
-                }
-                mAmap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(latLng, 18, 0, 0)), 500, null);
-
-                navDestPop.showAtLocation(tv_search, Gravity.BOTTOM,0,0);
-                LatLonPoint start = new LatLonPoint (mAmap.getMyLocation().getLatitude(), mAmap.getMyLocation().getLongitude());
-                navDestPop.setData(start,tip);
+    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
+    public void receive(LocationSearchEvent event) {
+        dismissFrag();
+        if (event != null && event.getCode() == REQUEST_POI_CODE) {
+            //搜索位置
+            tv_search.setText(event.getName());
+            LatLng latLng = new LatLng(event.getLatitude(), event.getLongitude());
+            if (marker == null) {
+                marker = mAmap.addMarker(new MarkerOptions().position(latLng).title(event.getName()).snippet(""));
+            } else {
+                marker.setPosition(latLng);
             }
+            mAmap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(latLng, 16, 0, 0)), 500, null);
+
+            LatLonPoint start = new LatLonPoint(mAmap.getMyLocation().getLatitude(), mAmap.getMyLocation().getLongitude());
+            setData(start, event);
         }
-    }*/
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
+    public void receive(FragmentBack event) {
+        dismissFrag();
+    }
+    private RouteBean startBean, endBean;
+    private DistanceSearch distanceSearch;
+    public void setData(LatLonPoint start, LocationSearchEvent event) {
+        distanceSearch = new DistanceSearch(getActivity());
+        distanceSearch.setDistanceSearchListener(this);
+        startBean = new RouteBean("我的位置",start.getLatitude(),start.getLongitude());
+        endBean = new RouteBean(event.getName(),event.getLatitude(),event.getLongitude());
+        tv_dest.setText(event.getName());
+        tv_location.setText(event.getAddress());
+        DistanceSearch.DistanceQuery query = new DistanceSearch.DistanceQuery();
+        LatLonPoint end = new LatLonPoint(event.getLatitude(), event.getLongitude());
+        query.addOrigins(start);
+        query.setDestination(end);
+        query.setType(DistanceSearch.TYPE_DISTANCE);
+        distanceSearch.calculateRouteDistanceAsyn(query);
+    }
 
+    @Override
+    public void onDistanceSearched(DistanceResult distanceResult, int i) {
+        if (i == 1000 && distanceResult != null && distanceResult.getDistanceResults() != null && distanceResult.getDistanceResults().size() > 0) {
+            double far = distanceResult.getDistanceResults().get(0).getDistance();
+            far = far / 1000;
+            DecimalFormat df = new DecimalFormat("#.0");
+            tv_far.setText(String.format("%s公里", df.format(far)));
+        }
+    }
 }
