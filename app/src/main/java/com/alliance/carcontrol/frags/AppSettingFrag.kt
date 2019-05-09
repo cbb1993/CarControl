@@ -1,5 +1,6 @@
 package com.alliance.carcontrol.frags
 
+import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import android.view.animation.Animation
@@ -7,10 +8,17 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import com.alliance.carcontrol.R
+import com.alliance.carcontrol.setting.AudioFragment
+import com.alliance.carcontrol.setting.CommonFragment
+import com.alliance.carcontrol.setting.ConnectFragment
 import com.base.baselib.adapter.CommonAdapter
 import com.base.baselib.adapter.ViewHolder
 import com.base.baselib.base.BaseFragment
+import com.base.event.FragmentSettingBack
 import kotlinx.android.synthetic.main.app_frag_setting.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * Created by 斌斌.
@@ -34,13 +42,13 @@ class AppSettingFrag : BaseFragment() {
     )
     private val list_icon_car = listOf(
         R.mipmap.door_and_window_control, R.mipmap.ambient_light, R.mipmap.driving_assistance,
-        R.mipmap.door_tail_control, R.mipmap.seat,R.mipmap.mobile_phone_wireless_charging,
-        R.mipmap.outside_video, R.mipmap.outside_light,R.mipmap.more
+        R.mipmap.door_tail_control, R.mipmap.seat, R.mipmap.mobile_phone_wireless_charging,
+        R.mipmap.outside_video, R.mipmap.outside_light, R.mipmap.more
     )
     private val list_text_car = listOf(
         R.string.doors_and_windows_control, R.string.atmosphere_lamp, R.string.driving_assistance_system_control,
         R.string.tailgate_control, R.string.chair_setting, R.string.wireless_charging_of_Mobile_setting,
-        R.string.out_mirror_light_setting, R.string.out_light_setting,R.string.others
+        R.string.out_mirror_light_setting, R.string.out_light_setting, R.string.others
     )
 
     override fun attachLayoutRes(): Int {
@@ -48,6 +56,10 @@ class AppSettingFrag : BaseFragment() {
     }
 
     override fun initView(view: View) {
+        EventBus.getDefault().register(this)
+
+
+        setting_content.setOnClickListener {  }
     }
 
     override fun lazyLoad() {
@@ -88,6 +100,15 @@ class AppSettingFrag : BaseFragment() {
 
                     iv_icon.setImageResource(list_icon_system[holder.realPosition])
                     tv_text.setText(list_text_system[holder.realPosition])
+
+
+                    holder.getView<View>(R.id.root).setOnClickListener{
+                        when(holder.realPosition){
+                            0 -> showFrag(ConnectFragment())
+                            1 -> showFrag(CommonFragment())
+                            3 -> showFrag(AudioFragment())
+                        }
+                    }
                 }
             }
 
@@ -100,8 +121,34 @@ class AppSettingFrag : BaseFragment() {
 
                 iv_icon.setImageResource(list_icon_car[holder.realPosition])
                 tv_text.setText(list_text_car[holder.realPosition])
+
+                holder.getView<View>(R.id.root).setOnClickListener{
+                    when(holder.realPosition){
+//                        0 -> showFrag(ConnectFragment())
+                    }
+                }
             }
         }
 
     }
+
+
+    fun showFrag(fragment: Fragment) {
+        setting_content.visibility =View.VISIBLE
+        activity!!.supportFragmentManager.beginTransaction().replace(R.id.setting_content, fragment).commit()
+    }
+    private fun dismiss(){
+        setting_content.visibility =View.GONE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().register(this)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun receive(event: FragmentSettingBack){
+        dismiss()
+    }
+
 }
