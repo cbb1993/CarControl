@@ -3,7 +3,7 @@
 
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:fitsSystemWindows">true</item>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
         <item name="android:windowBackground">@color/gray_ef</item>
 
     </style>

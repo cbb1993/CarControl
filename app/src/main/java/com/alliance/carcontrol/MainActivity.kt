@@ -66,7 +66,8 @@ class MainActivity : BaseActivity() {
         val appPhoneFrag = AppPhoneFrag()
         val appMusicFrag = AppMusicFrag()
         val appHomeFrag = AppHomeFrag()
-        val appGuideFrag = MainMapFragment()
+        val appGuideFrag = MainMapFragment().setmParentContainer(R.id.main_content) as MainMapFragment
+
         val appSettingFrag = AppSettingFrag()
 
         mFragments = listOf(appPhoneFrag, appMusicFrag, appHomeFrag, appGuideFrag, appSettingFrag)
