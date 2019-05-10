@@ -8,6 +8,8 @@ import com.alliance.carcontrol.homeui.AppHomeAirActivity
 import com.alliance.carcontrol.homeui.AppHomeAppFrag
 import com.alliance.carcontrol.homeui.AppHomeCarFrag
 import com.base.baselib.base.BaseFragment
+import com.base.baselib.utils.DialogUtils
+import com.base.baselib.utils.SharedPreferencesUtils
 import com.base.event.FragmentBackLast
 import kotlinx.android.synthetic.main.app_frag_home.*
 import org.greenrobot.eventbus.Subscribe
@@ -31,6 +33,12 @@ class AppHomeFrag : BaseFragment() {
             showChildfrag(AppHomeAppFrag())
         }
         ll_home_login.setOnClickListener {
+            val data = SharedPreferencesUtils.readData("accessToken")
+            //判断是否登陆
+            if (data != null && data.length > 0) {
+                DialogUtils.toastShow("已登录token：" + data)
+//                return@setOnClickListener
+            }
             startActivity(Intent(this@AppHomeFrag.context, AppLoginActivity::class.java))
         }
         ll_home_car.setOnClickListener {

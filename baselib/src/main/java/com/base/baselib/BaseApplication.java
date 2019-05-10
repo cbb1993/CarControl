@@ -1,6 +1,7 @@
 package com.base.baselib;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -10,6 +11,11 @@ import com.base.data.dao.DaoSession;
 
 public class BaseApplication extends Application {
     public static Application application;
+
+    public static Context instance() {
+        return application;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

@@ -60,7 +60,7 @@ class AppHomeCarFrag : BaseFragment() {
             }
         }
         rg_car_tab.check(R.id.rb_flow)
-        val list = listOf(1, 2, 3, 4, 5)
+        val list = listOf(1, 2, 3, 4, 5, 6, 7)
         rv_history.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
         rv_history.adapter = object : CommonAdapter<Int>(activity, list, R.layout.app_frag_home_car_item) {
             override fun convert(holder: ViewHolder?, t: MutableList<Int>?) {
