@@ -8,8 +8,8 @@ import android.view.KeyEvent
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.alliance.carcontrol.frags.*
-import com.alliance.map.RestRouteShowActivity
 import com.base.baselib.base.BaseActivity
+import com.powershare.atccev.ui.main.fragment.MainMapFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -66,7 +66,7 @@ class MainActivity : BaseActivity() {
         val appPhoneFrag = AppPhoneFrag()
         val appMusicFrag = AppMusicFrag()
         val appHomeFrag = AppHomeFrag()
-        val appGuideFrag = RestRouteShowActivity()
+        val appGuideFrag = MainMapFragment()
         val appSettingFrag = AppSettingFrag()
 
         mFragments = listOf(appPhoneFrag, appMusicFrag, appHomeFrag, appGuideFrag, appSettingFrag)

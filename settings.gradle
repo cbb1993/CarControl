@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':event', ':data', ':map'
+include ':app', ':baselib', ':event', ':data'

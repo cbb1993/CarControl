@@ -17,7 +17,8 @@ android {
                 arguments = [moduleName : project.getName()]
             }
         }
-
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -26,7 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -40,7 +40,8 @@ dependencies {
     api project(':event')
     api project(':data')
 
-
     annotationProcessor rootProject.ext.arouterCompiler
 
+
+    api "com.android.support:multidex:1.0.3"
 }
