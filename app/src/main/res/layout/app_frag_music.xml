@@ -97,6 +97,7 @@
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/ll_mu_music"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -206,6 +207,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"/>
     </LinearLayout>
+
+    <ImageView
+            android:id="@+id/ll_mu_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rg_music_tab"
+            android:src="@mipmap/car02"
+            android:visibility="gone"/>
 
     <FrameLayout
             android:id="@+id/fl_music_child"

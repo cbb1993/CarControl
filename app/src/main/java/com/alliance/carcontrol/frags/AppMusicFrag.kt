@@ -41,6 +41,8 @@ class AppMusicFrag : BaseFragment() {
                     iv_music.visibility = View.INVISIBLE
                     iv_pic.visibility = View.INVISIBLE
                     iv_vedio.visibility = View.INVISIBLE
+                    ll_mu_music.visibility = View.GONE
+                    ll_mu_pic.visibility = View.VISIBLE
                     rb_radio.startAnimation(mAnimationlarge)
                     rb_music.startAnimation(mAnimationOriginalSize)
                     rb_pic.startAnimation(mAnimationOriginalSize)
@@ -51,6 +53,8 @@ class AppMusicFrag : BaseFragment() {
                     iv_music.visibility = View.VISIBLE
                     iv_pic.visibility = View.INVISIBLE
                     iv_vedio.visibility = View.INVISIBLE
+                    ll_mu_music.visibility = View.VISIBLE
+                    ll_mu_pic.visibility = View.GONE
                     rb_radio.startAnimation(mAnimationOriginalSize)
                     rb_music.startAnimation(mAnimationlarge)
                     rb_pic.startAnimation(mAnimationOriginalSize)
@@ -61,6 +65,8 @@ class AppMusicFrag : BaseFragment() {
                     iv_music.visibility = View.INVISIBLE
                     iv_pic.visibility = View.VISIBLE
                     iv_vedio.visibility = View.INVISIBLE
+                    ll_mu_music.visibility = View.GONE
+                    ll_mu_pic.visibility = View.VISIBLE
                     rb_radio.startAnimation(mAnimationOriginalSize)
                     rb_music.startAnimation(mAnimationOriginalSize)
                     rb_pic.startAnimation(mAnimationlarge)
@@ -71,6 +77,8 @@ class AppMusicFrag : BaseFragment() {
                     iv_music.visibility = View.INVISIBLE
                     iv_pic.visibility = View.INVISIBLE
                     iv_vedio.visibility = View.VISIBLE
+                    ll_mu_music.visibility = View.GONE
+                    ll_mu_pic.visibility = View.VISIBLE
                     rb_radio.startAnimation(mAnimationOriginalSize)
                     rb_music.startAnimation(mAnimationOriginalSize)
                     rb_pic.startAnimation(mAnimationOriginalSize)
